@@ -1,0 +1,78 @@
+一 商业银行巡检项目设计
+	1、系统基础模块
+		1>全局变量管理(globals)
+		2>HR组织结构
+			
+	2、HR组织结构
+	3、业务模块：巡检设备并记录（pi_equipment_table）
+	4、业务模块：故障报修及故障类型和故障的记录
+		(1)equipmentmaintain(设备维修记录表)
+		(2)fault_repair_type(故障维修类型)
+		(3)fault_repair(故障维修)
+	5、程序功能模块
+		（1）functions（程序功能表）-大模块
+		（2）gwym（岗位和页面编码对照表）（岗位权限表）
+		（3）xtybm（系统页面编号和程序功能关联表）
+
+二 SQL层建立--参见：syyh_400_500_实体类和表结构以及前台创建
+三 登录和用户管理
+	1、MVC结构--
+		(1)com.doc
+		(2)util(utility,公用设施)
+		(3)model(entity/pojo)实体类--表的实体，业务实体类（扩展实体类）--多表查询()
+			User
+		(4)dao/dao.impl(SQl)
+				UserDao/UserDaoImpl
+		(5)service/service.impl(service/biz--businesses)业务逻辑层
+			UserService/UserServiceImpl
+		(6)controller(action)--属于servlet层，从servlet层独立出来
+		(7)servlet--DispatcherServlet
+		(8)View层（jsp、html）
+			1.导入设计好的静态页面体系(.html/.htm,css,js,image,video)
+			2.静态页面变成jsp动态页面
+				(1).html/.htm/改为.jsp
+				(2).jsp页面进行修改
+					<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+				(3).注意设计文件的meta中的编码
+				(4).检查导入的html的文件编码格式和文件内容编码保持一致
+	2.开发思路
+		(1).自下向上开发顺序实现 
+				<1> util 
+				<2> SQL->Entity类
+				<3> dao/dao.impl	
+					1)创建UserDao
+						//分页查询--获得记录总数/获得当前页记录集合
+						//增删改
+						//业务需求--获得所有部门和所有岗位
+					2)创建UserdaoImpl--实现接口UserDao
+				<4>service/service.impl
+					1)UserService
+						导入接口
+					2)UsreServiceImpl
+						框架实现
+				<5>依据jsp操作定位获取请求模块名/方法名
+					创建DispatcherServlet service方法
+					处理模块、方法名对dontroler层方法调用
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
